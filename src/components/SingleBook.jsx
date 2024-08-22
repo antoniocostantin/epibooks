@@ -37,7 +37,8 @@ class SingleBook extends Component {
           <>
             <Card
               className="book-cover d-flex flex-column border-3 border-danger"
-              onClick={() => {
+            >
+              <Card.Img variant="top" src={this.props.book.img} onClick={() => {
                 if (this.state.selected) {
                   this.setState({
                     selected: false,
@@ -47,10 +48,18 @@ class SingleBook extends Component {
                     selected: true,
                   });
                 }
-              }}
-            >
-              <Card.Img variant="top" src={this.props.book.img} />
-              <Card.Body>
+              }}/>
+              <Card.Body onClick={() => {
+                if (this.state.selected) {
+                  this.setState({
+                    selected: false,
+                  });
+                } else {
+                  this.setState({
+                    selected: true,
+                  });
+                }
+              }}>
                 <Card.Title>{this.props.book.title}</Card.Title>
               </Card.Body>
               <Button variant="outline-secondary" className="m-auto my-3">

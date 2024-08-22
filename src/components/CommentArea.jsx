@@ -16,7 +16,7 @@ class CommentArea extends Component {
     fetchComments = () => {
         fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.id}`, {
             headers: {
-                "Authorization": `${key}`
+                "Authorization": key
             }
         })
         .then((response) => {
@@ -45,7 +45,7 @@ class CommentArea extends Component {
                 <CommentsList comments={this.state.comments}/>
             </ListGroup>
             <CardBody>
-                <AddComment/>
+                <AddComment id={this.props.id}/>
             </CardBody>
             </>
         )
