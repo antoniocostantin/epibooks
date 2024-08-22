@@ -40,7 +40,7 @@ class BookList extends Component {
             </Col>
           </Row>
         </Container>
-        <Row className="g-4">
+       {( <Row className="g-4">
           {fantasy.map((book, i) => {
             return (
               <>
@@ -52,7 +52,7 @@ class BookList extends Component {
               </>
             );
           })}
-        </Row>
+        </Row>)}
       </>
     );
   }
