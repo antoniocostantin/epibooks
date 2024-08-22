@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { CardBody, ListGroup } from "react-bootstrap";
 import CommentsList from "./CommentsList";
+import AddComment from "./AddComment";
 const key = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmM3MmI2OTI4YWI5NjAwMTU2NjRmMGEiLCJpYXQiOjE3MjQzMjg4MDksImV4cCI6MTcyNTUzODQwOX0.wnBh_-sJ2xk_WEUOpVkm7v46qPvgLfKyFzSFbs1YXJg'
 
 class CommentArea extends Component {
@@ -44,7 +45,7 @@ class CommentArea extends Component {
                 <CommentsList comments={this.state.comments}/>
             </ListGroup>
             <CardBody>
-
+                <AddComment/>
             </CardBody>
             </>
         )

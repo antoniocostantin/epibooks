@@ -6,7 +6,7 @@ class CommentsList extends Component {
     return (
       <>
         {this.props.comments.map((comment) => {
-          return <ListGroup.Item>{comment.comment}</ListGroup.Item>;
+          return <ListGroup.Item><p className="text-muted fs-6 display-6">{comment.author}<br/>{comment.comment}---{comment.rate}⭐</p></ListGroup.Item>;
         })}
       </>
     );
