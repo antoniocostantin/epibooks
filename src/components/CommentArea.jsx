@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { CardBody, ListGroup, Spinner } from "react-bootstrap";
 import CommentsList from "./CommentsList";
+import Error from "./Error";
 import AddComment from "./AddComment";
 const key =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmM3MmI2OTI4YWI5NjAwMTU2NjRmMGEiLCJpYXQiOjE3MjQzMjg4MDksImV4cCI6MTcyNTUzODQwOX0.wnBh_-sJ2xk_WEUOpVkm7v46qPvgLfKyFzSFbs1YXJg";
@@ -9,6 +10,7 @@ class CommentArea extends Component {
   state = {
     comments: [],
     isLoading: true,
+    isWrong: false,
   };
 
   componentDidMount = () => {
@@ -41,13 +43,16 @@ class CommentArea extends Component {
       })
       .catch((err) => {
         console.log("ERRORE NEL RECUPERO DATI (internet)?", err);
+        this.setState({
+            isWrong: true,
+        })
       });
   };
 
   render() {
     return (
       <>
-        <ListGroup className="list-group-flush">
+        {this.state.isWrong?(<><Error/></>):(<><ListGroup className="list-group-flush">
           {this.state.isLoading ? (
             <ListGroup.Item>
               <Spinner animation="border" role="status">
@@ -60,7 +65,7 @@ class CommentArea extends Component {
         </ListGroup>
         <CardBody>
           <AddComment id={this.props.id} />
-        </CardBody>
+        </CardBody></>)}
       </>
     );
   }
